@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app
+spec:
+  selector:
+    matchLabels:
+      app: sample-app
+  template:
+    metadata:
+      labels:
+        app: sample-app
+    spec:
+      containers:
+        - name: sample-app
+          image: gcr.io/sakamo-dev/github-actions-sample@sha256:b19e80eac4767a00997681f1022f09cb10eadfb223d60e61b50f8d223d6e2792
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "128m"
+            requests:
+              memory: "128Mi"
+              cpu: "128m"
